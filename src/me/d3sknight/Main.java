@@ -1,6 +1,5 @@
 package me.d3sknight;
 
-import me.d3sknight.Config;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,11 +11,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 public class Main extends JavaPlugin{
     public static Main plugin;
+
+    private static Main singleton = new Main();
+    public static Main getInstance( ) {
+        return singleton;
+    }
+
     @Override
     public void onEnable(){
         plugin = this;
         Config config = new Config();
-
         config.l = new File(getDataFolder(), "lang.yml");
         config.p = new File(getDataFolder(), "playerdata.yml");
         saveDefaultConfig();

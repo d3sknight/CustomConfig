@@ -1,22 +1,27 @@
 package me.d3sknight;
 
+
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
 
-public class Config extends Main{
+public class Config {
+
+    Main main = Main.getInstance();
+
+
     public File l;
     public File p;
     public YamlConfiguration lang = new YamlConfiguration();
     public YamlConfiguration players = new YamlConfiguration();
     public void mkdir(){
         if(!l.exists()){
-            saveResource("lang.yml", false);
+            main.saveResource("lang.yml", false);
         }
         if(!p.exists()){
-            saveResource("playerdata.yml", false);
+            main.saveResource("playerdata.yml", false);
         }
     }
     public void loadYamls(){
