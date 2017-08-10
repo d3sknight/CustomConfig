@@ -9,22 +9,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-public class Main extends JavaPlugin{
-    public static Main plugin;
-
-    private static Main singleton = new Main();
-    public static Main getInstance( ) {
+public class CustomConfig extends JavaPlugin{
+    public static CustomConfig singleton;
+    public static CustomConfig getInstance( ) {
         return singleton;
     }
 
     @Override
     public void onEnable(){
-        plugin = this;
+        singleton = this;
         Config config = new Config();
         config.l = new File(getDataFolder(), "lang.yml");
         config.p = new File(getDataFolder(), "playerdata.yml");
         saveDefaultConfig();
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"Config has been loaded");
         config.mkdir();
         config.loadYamls();
     }
@@ -34,10 +31,11 @@ public class Main extends JavaPlugin{
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
         if (cmd.getName().equalsIgnoreCase("data") && sender instanceof Player){
             Config config = new Config();
+            config.getPlayersData();
             Player p = (Player) sender;
             p.sendMessage("Test thu cai");
             config.players.set(p.getUniqueId().toString(),"test!");
-            config.saveData();
+            config.save(config.p);
             return true;
         }
         return false;
