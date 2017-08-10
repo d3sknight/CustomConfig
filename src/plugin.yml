@@ -1,0 +1,5 @@
+name: CustomConfig
+main: me.d3sknight.Main
+version: 1.0
+commands:
+  data:
