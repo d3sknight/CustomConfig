@@ -41,14 +41,21 @@ public class Config {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"Load Yaml");
 
     }
-    public void save(File f) {
+    public void saveLang() {
         try {
-            lang.save(f);
+            lang.save(l);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void saveData(){
+        try {
+            players.save(p);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     public YamlConfiguration getLang(){
         return lang;
     }
