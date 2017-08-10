@@ -30,32 +30,20 @@ public class Config {
 
         try {
             lang.load(l);
+            players.load(p);
         } catch (IOException | InvalidConfigurationException e){
             e.printStackTrace();
         }
-        try {
-            lang.load(p);
-        } catch (IOException | InvalidConfigurationException e){
-            e.printStackTrace();
-        }
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"Load Yaml");
-
     }
-    public void saveLang() {
+    public void save() {
         try {
             lang.save(l);
+            players.save(p);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void saveData(){
-        try {
-            players.save(p);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
     public YamlConfiguration getLang(){
         return lang;
     }

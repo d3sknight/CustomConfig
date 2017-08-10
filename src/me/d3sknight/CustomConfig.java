@@ -33,7 +33,7 @@ public class CustomConfig extends JavaPlugin{
             Player p = (Player) sender;
             p.sendMessage("Test thu cai");
             config.players.set(p.getUniqueId().toString(),"test!");
-            config.saveData();
+            config.save();
             return true;
         }
         return false;
